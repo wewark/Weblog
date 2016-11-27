@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weblog</title>
+    <style type="text/css" media="screen">
+      body {
+  			font-family: sans-serif;
+  			width: 800px;
+  			margin: 0 auto;
+  			padding: 10px;
+  		}
+  		hr {
+  			margin: 20px auto;
+  		}
+      .top {
+        color: #d6d6c2;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top">
+      {% if username_top: %}
+        {{username_top}}
+      {% else: %}
+      <a href="/login">login</a> |
+      <a href="/signup">signup</a>
+      {% endif %}
+      {% if page: %} |
+      {% if page.name == 'home': %}
+        <a href="/_edit">edit</a>
+      {% else: %}
+        <a href="/_edit/{{page.name}}">edit</a>
+      {% endif %}
+      {% endif %}
+    </div>
+    <hr>
+
+    {% block content %}
+		{% endblock %}
+  </body>
+</html>
